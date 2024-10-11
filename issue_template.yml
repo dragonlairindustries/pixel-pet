@@ -31,3 +31,6 @@ issues:
     body: "Create the HTML structure for the About-us (about-us.html) page."
     labels: ["html", "to-do"]
 
+  - title: "Set YAML File"
+    body: "Setup the YAML issues workflow."
+    labels: ["html", "to-do"]
