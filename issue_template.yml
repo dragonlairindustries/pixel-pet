@@ -1,0 +1,33 @@
+issues:
+  - title: "Design Wireframe for Home Page"
+    body: "Create and design the wireframe for the home page. Include the 'Click to Play' button"
+    labels: ["design", "to-do"]
+
+  - title: "Design Wireframe for Game Page"
+    body: "Design the wireframe for the game page where users will interact with the dragon. Include buttons for feed, pet, clean, and play -- (Placeholder buttons), as well as stat displays."
+    labels: ["design", "to-do"]
+
+  - title: "Design Wireframe for high-score Page"
+    body: "Design the wireframe for the high-score page where users will be able to record scores and three letters"
+    labels: ["design", "to-do"]
+
+  - title: "Design Wireframe for About-us"
+    body: "Design the wireframe for about us page"
+    labels: ["design", "to-do"]
+
+  - title: "Set Up Basic HTML Structure for Home Page"
+    body: "Create the HTML structure for the home (index.html) page."
+    labels: ["html", "to-do"]
+
+  - title: "Set Up Basic HTML Structure for Game Page"
+    body: "Create the HTML structure for the Game (play-game.html) page."
+    labels: ["html", "to-do"]
+
+  - title: "Set Up Basic HTML Structure for high-score Page"
+    body: "Create the HTML structure for the high-score (high-score.html) page."
+    labels: ["html", "to-do"]
+
+  - title: "Set Up Basic HTML Structure for About-us Page"
+    body: "Create the HTML structure for the About-us (about-us.html) page."
+    labels: ["html", "to-do"]
+
