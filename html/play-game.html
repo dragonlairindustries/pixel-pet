@@ -1,62 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Play Game - Pixel Pet</title>
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/play-game.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./play-game.html">Play Game</a></li>
-                <li><a href="./high-score.html">High Scores</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./play-game.html">Play Game</a></li>
+          <li><a href="./high-score.html">High Scores</a></li>
+          <li><a href="./about-us.html">About Us</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <div class="game-container">
-            <div class="dragon-details">
-                <h2>Dragon Name</h2>
-                <div class="dragon-animation-box">
-                    <!-- Dragon animation goes here -->
-                    <img src="https://placehold.co/600x400" alt="Placeholder Image" />
-                </div>
-
-        <!-- Went with a LI thinking we can style this by dropping down into the eliments when we get to styling -->
-                <ul class="health-bar" aria-label="Health status">
-                    <li class="segment green" aria-label="Healthy">Healthy</li>
-                    <li class="segment green" aria-label="Healthy">Healthy</li>
-                    <li class="segment yellow" aria-label="Caution">Caution</li>
-                    <li class="segment yellow" aria-label="Caution">Caution</li>
-                    <li class="segment red" aria-label="Critical">Critical</li>
-                </ul>
-            </div>
+      <div class="game-container">
+        <div class="dragon-details">
+          <div class="dragon-animation-box">
+            <!-- Dragon animation goes here -->
+            <img src="https://placehold.co/600x400" alt="Placeholder Image" />
+            <h2>Dragon Name</h2>
+          </div>
+          
+          <div class="health-bar-container">
+            <!-- Went with a LI thinking we can style this by dropping down into the elements when we get to styling -->
+          <h3>Health:</h3>
+          <ul class="health-bar" aria-label="Health status">
+            <li class="segment red" aria-label="Critical"></li>
+            <li class="segment red" aria-label="Critical"></li>
+            <li class="segment yellow" aria-label="Caution"></li>
+            <li class="segment yellow" aria-label="Caution"></li>
+            <li class="segment yellow" aria-label="Caution"></li>
+            <li class="segment yellow" aria-label="Caution"></li>
+            <li class="segment green" aria-label="Healthy"></li>
+            <li class="segment green" aria-label="Healthy"></li>
+            <li class="segment green" aria-label="Healthy"></li>
+            <li class="segment green" aria-label="Healthy"></li>
+          </ul>
         </div>
-
+        </div>        
+        
         <!-- Thinking we need divs here for JS since this will be dynamic -->
         <div class="dragon-stats">
+          <h2>Stats</h2>
+          <div class="stats-grid">
             <div class="stat stat-hunger">Hunger 0/10</div>
             <div class="stat stat-cleanliness">Cleanliness 0/10</div>
             <div class="stat stat-happiness">Happiness 0/10</div>
-            <div class="stat stat-playtime">Playtime 0/10</div>
+            <div class="stat stat-Exercise">Exercise 0/10</div>
+          </div>
         </div>
+        
+      </main>
 
-        <section class="game-actions">
-            <button type="button" aria-label="Feed the Dragon">Feed Dragon</button>
-            <button type="button" aria-label="Clean the Dragon's Cave">Clean the Cave</button>
-            <button type="button" aria-label="Play with the Dragon">Play with Dragon</button>
-            <button type="button" aria-label="Pet the Dragon">Pet Dragon</button>
-        </section>
-    </main>
-</body>
-</html>
+      <div class="game-actions">
+        <button type="button" aria-label="Feed the Dragon">Feed Dragon</button>
+        <button type="button" aria-label="Clean the Dragon's Cave">
+          Clean the Cave
+        </button>
+        <button type="button" aria-label="Play with the Dragon">
+          Play with Dragon
+        </button>
+        <button type="button" aria-label="Pet the Dragon">Pet Dragon</button>
+      </div>
+
+    </body>
+    </html>
+    
