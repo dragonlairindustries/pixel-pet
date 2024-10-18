@@ -27,3 +27,8 @@ article {
 button {
     font-size: 20px;
 }
+
+button a {
+    text-decoration: none;
+    color: black;
+}
