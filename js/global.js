@@ -1,9 +1,48 @@
-// script for homepage modal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Script for home-page modal
+
+const homePageModal = document.getElementById('home-page-modal');
 
 setTimeout(function() {
-    document.getElementById('home-page-modal').style.display = 'flex';
-}, 5000);
+    homePageModal.style.display = 'flex';
+}, 1000);
 
-document.querySelector('.close-btn').addEventListener('click', function() {
-    document.getElementById('home-page-modal').style.display = 'none';
+const homePageModalClose = document.querySelector('.close-btn'); 
+
+homePageModalClose.addEventListener('click', function() {
+    homePageModal.style.display = 'none';
 });
