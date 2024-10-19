@@ -36,7 +36,6 @@ main {
 
 .lair {
   position: relative;
-  z-index: 1;
 }
 
 .div-over {
@@ -44,7 +43,7 @@ main {
   left: 250px;
   width: 50%;
   height: 50%;
-  z-index: 3;
+  z-index: 1;
   top: 25%; /* Center vertically */
   left: 25%; /* Center horizontally */
 }
@@ -253,11 +252,11 @@ button {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
-  z-index: 1;
+  z-index: 99;
 }
 
 .modal {
-  z-index: 2;
+  z-index: 100;
 }
 
 .hidden {
