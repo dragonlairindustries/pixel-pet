@@ -1,63 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Play Game - Pixel Pet</title>
-    <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link rel="stylesheet" href="../css/play-game.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="../js/global.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="./play-game.html">Play Game</a></li>
-          <li><a href="./high-score.html">High Scores</a></li>
-          <li><a href="./about-us.html">About Us</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <main>
-      
-      <!-- Modal -->
-      <section class="modal hidden">
-        <div class="flex">
-          <P>Welcome</P>
-          <button class="btn-close">⨉</button>
-        </div>
-        <div>
-          <h3>What should your dragon call you?</h3>
-        </div>
-      
-        <input type="text" id="userName" placeholder="username" />
-        <button class="btn-submit">Submit</button>
-      </section>
-      <div class="overlay hidden"></div></div>
-      <!-- End Modal -->
-      
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play Game - Pixel Pet</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/play-game.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- JS SCRIPTS -->
+  <script src="../js/global.js" defer></script>
+  <script src="../js/app.js" defer></script>
+
+  <!-- NAV BAR -->
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="./play-game.html">Play Game</a></li>
+        <li><a href="./high-score.html">High Scores</a></li>
+        <li><a href="./about-us.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- END NAV BAR  -->
+  <main>
+
+    <!-- Modal -->
+    <section class="modal hidden">
+      <div class="flex">
+        <P>Welcome</P>
+        <button class="btn-close">⨉</button>
+      </div>
+      <div>
+        <h3>What should your dragon call you?</h3>
+      </div>
+
+      <input type="text" id="userName" placeholder="username" />
+      <button class="btn-submit">Submit</button>
+    </section>
+    <div class="overlay hidden"></div>
+    </div>
+    <!-- End Modal -->
 
 
-      <div class="game-container">
-        <div class="dragon-details">
-          <div class="dragon-animation-box">
-            <!-- Dragon animation goes here -->
-            <img src="https://placehold.co/600x400" alt="Placeholder Image" />
-            <h2>Dragon Name</h2>
+    <!-- Dragon Containers -->
+    <div class="game-container">
+      <div class="dragon-details">
+        <div class="dragon-animation-box">
+          <div class="dragon-container">
+            <img class="dragon" src="../assets/dragons/bluedragon.png" alt="blue-dragon" />
           </div>
-          
-          <div class="health-bar-container">
-            <!-- Went with a LI thinking we can style this by dropping down into the elements when we get to styling -->
+          <img class="lair" src="../assets/lairs/cave.png" alt="cave" />
+          <h2>Dragon Name</h2>
+        </div>
+        <!-- End of dragon container -->
+
+        <!-- Health bar -->
+        <div class="health-bar-container">
           <h3>Health:</h3>
           <ul class="health-bar" aria-label="Health status">
             <li class="segment red" aria-label="Critical"></li>
@@ -72,32 +81,32 @@
             <li class="segment green" aria-label="Healthy"></li>
           </ul>
         </div>
-        </div>        
-        
-        <!-- Thinking we need divs here for JS since this will be dynamic -->
-        <div class="dragon-stats">
-          <h2>Stats</h2>
-          <div class="stats-grid">
-            <div class="stat stat-hunger">Hunger 0/10</div>
-            <div class="stat stat-cleanliness">Cleanliness 0/10</div>
-            <div class="stat stat-happiness">Happiness 0/10</div>
-            <div class="stat stat-Exercise">Exercise 0/10</div>
-          </div>
-        </div>
-        
-      </main>
-
-      <div class="game-actions">
-        <button type="button" aria-label="Feed the Dragon">Feed Dragon</button>
-        <button type="button" aria-label="Clean the Dragon's Cave">
-          Clean the Cave
-        </button>
-        <button type="button" aria-label="Play with the Dragon">
-          Play with Dragon
-        </button>
-        <button type="button" aria-label="Pet the Dragon">Pet Dragon</button>
+        <!-- end of Health bar -->
       </div>
 
-    </body>
-    </html>
-    
+      <!-- Dragon Stats -->
+      <div class="dragon-stats">
+        <h2>Stats</h2>
+        <div class="stats-grid">
+          <div class="stat stat-hunger" id="hunger-stat">Hunger 10/10</div>
+          <div class="stat stat-cleanliness" id="cleanliness-stat">Cleanliness 10/10</div>
+          <div class="stat stat-happiness" id="happiness-stat">Happiness 10/10</div>
+          <div class="stat stat-exercise" id="exercise-stat">Exercise 10/10</div>
+        </div>
+      </div>
+      <!-- End of dragon stats -->
+  </main>
+
+  <!-- Game Actions -->
+  <div class="game-actions">
+    <button id="start-game">Start Game</button> <!-- Temp button -->
+    <button id="feed" type="button" aria-label="Feed the Dragon">Feed</button>
+    <button id="clean" type="button" aria-label="Clean the Dragon's Cave">Clean</button>
+    <button id="play" type="button" aria-label="Play with the Dragon">Play</button>
+    <button id="pet" type="button" aria-label="Pet the Dragon">Pet</button>
+  </div>
+  <!-- end of game actions -->
+
+  
+</body>
+</html>
