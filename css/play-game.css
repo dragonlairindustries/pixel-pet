@@ -18,6 +18,7 @@ main {
   align-items: center;
 }
 
+/* Dragon container */
 .dragon-animation-box {
   position: relative; /* Container relative to its children */
   border: 3px solid #000;
@@ -47,7 +48,9 @@ main {
   top: 25%; /* Center vertically */
   left: 25%; /* Center horizontally */
 }
+/* end of dragon container */
 
+/* Health bar */
 .health-bar-container {
   display: flex;
   width: 83%;
@@ -65,7 +68,6 @@ main {
   color: #333;
 }
 
-/* Health Bar */
 .health-bar {
   display: flex;
   list-style: none;
@@ -98,6 +100,7 @@ main {
 .segment.red {
   background-color: #f44336;
 }
+/* end of Health bar */
 
 /* Dragon Stats */
 .dragon-stats {
@@ -144,6 +147,7 @@ main {
 .dragon-stats .stat:hover {
   transform: scale(1.05);
 }
+/* end of dragon stats */
 
 /* Game Actions */
 .game-actions {
@@ -172,6 +176,7 @@ main {
 .game-actions button:active {
   background-color: #9955;
 }
+/* end of game actions */
 
 /* Modal CSS */
 .modal {
@@ -260,3 +265,5 @@ button {
 .hidden {
   display: none;
 }
+/* end of play-game modal */
+
