@@ -26,11 +26,7 @@ article {
 
 button {
     font-size: 20px;
-}
-
-button a {
-    text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .click-to-play {
@@ -40,10 +36,6 @@ button a {
   padding: 15px 25px;
   background-color: black;
   border-radius: 5px;
-}
-
-.click-to-play a {
-    color: white;
 }
 
 .overlay {
@@ -96,4 +88,5 @@ button a {
     border: none;
     background: #eee;
     border-radius: 50%;
+    color: black;
   }

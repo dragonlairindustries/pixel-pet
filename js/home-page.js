@@ -20,5 +20,9 @@ const closeHomePageModal = function () {
     homePageOverlay.style.display= 'none';
 }
 
+const playGameButton = function () {
+    window.location.href = "html/play-game.html";
+}
+
 // Event Listeners
 homePageModalCloseBtn.addEventListener('click', closeHomePageModal);
