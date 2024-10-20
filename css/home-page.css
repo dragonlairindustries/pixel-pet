@@ -1,9 +1,11 @@
+/* Header Styling */
 div.h1-header {
     margin: 30px 0;
     display: flex;
     justify-content: center;
 }
 
+/* Main Body Positioning */
 .body-container {
     display: flex;
     justify-content: center;
@@ -17,7 +19,27 @@ article {
     align-items: center;
     justify-content: center;
 }
+/* End Main Body Positioning */
 
+/* Dragon & Lair Visual Styling */
+.dragon-lair {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.dragon-lair img {
+    width: 100%;
+}
+
+.dragon {
+    position: absolute;
+    width: 15%;
+    top: 40%;
+}
+/* End Dragon & Lair Visual Styilng */
+
+/* Styling for Button */
 .button-container {
     margin: 35px 0;
     display: flex;
@@ -37,7 +59,9 @@ button {
   background-color: black;
   border-radius: 5px;
 }
+/* End Button Styiling */
 
+/* Modal & Overlay Styling */
 .overlay {
     display: none;
     position: fixed;
@@ -82,7 +106,6 @@ button {
     margin: 0.4rem 0 0.2rem;
   }
 
-
   .close-btn {
     font-size: 1rem;
     border: none;
@@ -90,3 +113,4 @@ button {
     border-radius: 50%;
     color: black;
   }
+  /* End Modal Styling */
