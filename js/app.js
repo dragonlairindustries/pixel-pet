@@ -3,7 +3,10 @@ let stats = {
     hunger: 10,
     cleanliness: 10,
     happiness: 10,
-    exercise: 10
+    exercise: 10,
+    get total() {
+        return this.hunger + this.cleanliness + this.happiness + this.exercise;
+    }
 };
 
 // Variables to control the game state
@@ -25,6 +28,8 @@ function updateStats() {
     stats.cleanliness = Math.max(0, stats.cleanliness - 1); // Cleanliness decreases
     stats.happiness = Math.max(0, stats.happiness - 1); // Happiness decreases
     stats.exercise = Math.max(0, stats.exercise - 1); // Exercise decreases
+
+    adjustHealthBasedOnStats(); // Adjust health based on updated stats
 }
 
 // Function to render stats on screen
@@ -33,6 +38,9 @@ function renderStats() {
     document.getElementById('cleanliness-stat').textContent = `Cleanliness: ${stats.cleanliness}/10`;
     document.getElementById('happiness-stat').textContent = `Happiness: ${stats.happiness}/10`;
     document.getElementById('exercise-stat').textContent = `Exercise: ${stats.exercise}/10`;
+    document.getElementById('total-stat').textContent = `Total Stats: ${stats.total}/40`;
+
+    adjustHealthBasedOnStats(); // Adjust health based on current stats
 }
 
 // Functions to handle button clicks
@@ -60,6 +68,7 @@ function exercise() {
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
     stats.hunger = Math.max(0, stats.hunger - 1); // Hunger decreases
 }
+
 
 // Event listeners for buttons
 document.getElementById('feed').addEventListener('click', feed);

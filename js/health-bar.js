@@ -49,5 +49,21 @@ function increaseHealth() {
     }
 }
 
+function adjustHealthBasedOnStats() {
+    const totalStats = stats.total;
+    const targetHealth = Math.floor(totalStats / 2.6);
+
+    // Decrease health if total stats are low
+    while (currentHealth > targetHealth) {
+        decreaseHealth();
+    }
+
+    // Increase health if total stats are high
+    while (currentHealth < targetHealth) {
+        increaseHealth();
+    }
+}
+
+
 createHealthBar();
 updateHealthBar();
