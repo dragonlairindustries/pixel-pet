@@ -23,6 +23,7 @@ article {
 
 /* Dragon & Lair Visual Styling */
 .dragon-lair {
+    position: relative;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -34,10 +35,11 @@ article {
 
 .dragon {
     position: absolute;
-    width: 15%;
-    top: 40%;
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Adjust vertical position */
+    transform: translate(-50%, -40%); /* Center the dragon based on its own size */
 }
-/* End Dragon & Lair Visual Styilng */
+/* End Dragon & Lair Visual Styling */
 
 /* Styling for Button */
 .button-container {
