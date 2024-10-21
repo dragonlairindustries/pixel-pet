@@ -48,6 +48,7 @@ function feed() {
     console.log("feed was pushed");
     stats.hunger = Math.min(10, stats.hunger + 2); // Increase hunger stat
     stats.cleanliness = Math.max(0, stats.cleanliness - 1); // Cleanliness decreases
+    adjustHealthBasedOnStats(); // Adjust health immediately
     renderStats()
 }
 
@@ -55,6 +56,7 @@ function clean() {
     console.log("clean was pushed");
     stats.cleanliness = Math.min(10, stats.cleanliness + 2); // Increase cleanliness stat
     stats.happiness = Math.max(0, stats.happiness - 1); // Happiness decreases
+    adjustHealthBasedOnStats(); // Adjust health immediately
     renderStats()
 }
 
@@ -62,6 +64,7 @@ function play() {
     console.log("play was pushed");
     stats.happiness = Math.min(10, stats.happiness + 2); // Increase happiness stat
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
+    adjustHealthBasedOnStats(); // Adjust health immediately
     renderStats()
 }
 
@@ -69,6 +72,7 @@ function exercise() {
     console.log("exercise was pushed");
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
     stats.hunger = Math.max(0, stats.hunger - 1); // Hunger decreases
+    adjustHealthBasedOnStats(); // Adjust health immediately
     renderStats()
 }
 
