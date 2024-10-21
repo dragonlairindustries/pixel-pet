@@ -92,6 +92,7 @@ window.addEventListener("load", function() {
 
         document.getElementById('begin-game').addEventListener('click', function() {
             closeModal(); 
+            startGame(); // invokes the start game function in app.js
         });
     }
 
