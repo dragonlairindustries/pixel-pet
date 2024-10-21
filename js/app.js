@@ -40,6 +40,7 @@ function feed() {
     console.log("feed was pushed");
     stats.hunger = Math.min(10, stats.hunger + 2); // Increase hunger stat
     stats.cleanliness = Math.max(0, stats.cleanliness - 1); // Cleanliness decreases
+    decreaseHealth();
 }
 
 function clean() {
