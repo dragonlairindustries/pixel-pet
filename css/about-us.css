@@ -38,6 +38,8 @@ main section:first-of-type img {
     max-width: 400px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    border-radius: 18px;
 }
 
 /* Flexbox layout for profiles */
