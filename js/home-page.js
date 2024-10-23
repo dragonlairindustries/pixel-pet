@@ -3,7 +3,7 @@
 const homePageModal = document.getElementById('home-page-modal');
 const homePageModalCloseBtn = document.querySelector('.close-btn'); 
 const homePageOverlay = document.querySelector('.overlay');
-const modalTimer = 1000;
+const modalTimer = 60000;
 
 // Home Page Functions
 
