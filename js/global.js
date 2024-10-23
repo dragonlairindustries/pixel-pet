@@ -95,9 +95,15 @@ function finishModal() {
     document.getElementById('begin-game').addEventListener('click', function() {
         closeModal(); 
         startGame(); // invokes the start game function in app.js
-        
+    
+    //Convert userData to a JSON string and store it in local storage
     const userDataString = JSON.stringify(userData);
     localStorage.setItem('userData',userDataString);
+
+    //Retrieve userData from local storage, parse the string & console log the new JS object
+    const storedUserData = localStorage.getItem('userData');
+    const parsedUserData = JSON.parse(storedUserData);
+    console.log(parsedUserData);
     });
 }
 renderStep(currentStep);
