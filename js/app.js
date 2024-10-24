@@ -10,6 +10,7 @@ let stats = {
 };
 
 // Variables to control the game state
+let score = 0;
 let gameInterval;
 const statDecayRate = 10000;
 
@@ -44,30 +45,34 @@ function renderStats() {
 // Functions to handle button clicks
 function feed() {
     console.log("feed was pushed");
+    scoreTracker('feed', stats.hunger);
     stats.hunger = Math.min(10, stats.hunger + 2); // Increase hunger stat
     stats.cleanliness = Math.max(0, stats.cleanliness - 1); // Cleanliness decreases
     adjustHealthBasedOnStats(); // Adjust health immediately
-    renderStats()
+    renderStats();
 }
 
 function clean() {
     console.log("clean was pushed");
+    scoreTracker('clean', stats.cleanliness);
     stats.cleanliness = Math.min(10, stats.cleanliness + 2); // Increase cleanliness stat
     stats.happiness = Math.max(0, stats.happiness - 1); // Happiness decreases
     adjustHealthBasedOnStats(); // Adjust health immediately
-    renderStats()
+    renderStats();
 }
 
 function play() {
     console.log("play was pushed");
+    scoreTracker('play', stats.happiness);
     stats.happiness = Math.min(10, stats.happiness + 2); // Increase happiness stat
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
     adjustHealthBasedOnStats(); // Adjust health immediately
-    renderStats()
+    renderStats();
 }
 
 function exercise() {
     console.log("exercise was pushed");
+    scoreTracker('exercise', stats.exercise);
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
     stats.hunger = Math.max(0, stats.hunger - 1); // Hunger decreases
     adjustHealthBasedOnStats(); // Adjust health immediately
@@ -88,6 +93,9 @@ function showGameOverModal() {
 function resetGame() {
     clearInterval(gameInterval); // Clear the existing game interval
 
+    // Reset score
+    score = 0
+    updateScoreDisplay();
     // Reset health stats
     stats.hunger = 10;
     stats.cleanliness = 10;
@@ -104,6 +112,24 @@ function resetGame() {
     renderStats();
     startGame();
     console.log("New game instance");
+}
+
+// Score tracking function - now checks the stat before it's updated
+function scoreTracker(action, currentStatValue) {
+    if (currentStatValue === 10) {
+        score--;
+        console.log(`Lost a point! Pet doesn't need ${action} right now!`);
+    } else {
+        score++;
+        console.log(`Gained a point! Pet needed ${action}!`);
+    }
+    updateScoreDisplay();
+    return score;
+}
+    
+// Update the score display
+function updateScoreDisplay() {
+    document.getElementById('score').textContent = `Score: ${score}`;
 }
 
 
