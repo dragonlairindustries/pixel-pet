@@ -47,7 +47,6 @@ function assignRandomDragon() {
     // Add the new random color class
     dragonElement.classList.add(randomDragon.className);
     dragonElement.removeAttribute('style');
-    dragonElement.style.display = 'block'; // Make sure dragon is visible
     
     // Initialize stats from the dragon's base stats
     Object.assign(stats, randomDragon.baseStats);
