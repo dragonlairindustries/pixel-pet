@@ -73,14 +73,34 @@ function exercise() {
     stats.exercise = Math.min(10, stats.exercise + 2); // Increase exercise stat
     stats.hunger = Math.max(0, stats.hunger - 1); // Hunger decreases
     adjustHealthBasedOnStats(); // Adjust health immediately
-    renderStats()
+    renderStats();
 }
 
 function showGameOverModal() {
     const gameOverModal = document.getElementById('game-over-modal');
     gameOverModal.style.display = 'flex'; // Modal pops up
 
+    // Add event listener to Restart Game button
+    document.getElementById('restart-game').addEventListener('click', function() {
+        resetGame();
+    });
 }
+
+function resetGame() {
+    // Reset health stats
+    stats.hunger = 10;
+    stats.cleanliness = 10;
+    stats.happiness = 10;
+    stats.exercise = 10;
+
+    // Hide the Game Over modal
+    document.getElementById('game-over-modal').style.display = 'none';
+
+    // Re-render stats and restart the game
+    renderStats();
+    startGame();
+}
+
 
 // Event listeners for buttons
 document.getElementById('feed').addEventListener('click', feed);
