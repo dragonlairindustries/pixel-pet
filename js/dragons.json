@@ -1,0 +1,59 @@
+{
+  "dragons": [
+    {
+      "id": "red",
+      "className": "dragon-red",
+      "baseStats": {
+        "hunger": 10,
+        "cleanliness": 10,
+        "happiness": 10,
+        "exercise": 10
+      },
+      "description": "A fierce red dragon"
+    },
+    {
+      "id": "blue",
+      "className": "dragon-blue",
+      "baseStats": {
+        "hunger": 10,
+        "cleanliness": 10,
+        "happiness": 10,
+        "exercise": 10
+      },
+      "description": "A calm blue dragon"
+    },
+    {
+      "id": "green",
+      "className": "dragon-green",
+      "baseStats": {
+        "hunger": 10,
+        "cleanliness": 10,
+        "happiness": 10,
+        "exercise": 10
+      },
+      "description": "A peaceful green dragon"
+    },
+    {
+      "id": "purple",
+      "className": "dragon-purple",
+      "baseStats": {
+        "hunger": 10,
+        "cleanliness": 10,
+        "happiness": 10,
+        "exercise": 10
+      },
+      "description": "A mysterious purple dragon"
+    },
+    {
+      "id": "gold",
+      "className": "dragon-gold",
+      "baseStats": {
+        "hunger": 10,
+        "cleanliness": 10,
+        "happiness": 10,
+        "exercise": 10
+      },
+      "description": "A majestic gold dragon"
+    }
+  ]
+}

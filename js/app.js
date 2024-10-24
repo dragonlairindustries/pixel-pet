@@ -11,11 +11,59 @@ let stats = {
 
 // Variables to control the game state
 let gameInterval;
-const statDecayRate = 100;
+const statDecayRate = 10000;
+let currentDragon = null;
+let dragonsData = null;
+
+// Function to load dragons data
+async function loadDragonsData() {
+    try {
+        const response = await fetch('/js/dragons.json');
+        dragonsData = await response.json();
+        console.log('Dragons data loaded:', dragonsData);
+        return true;
+    } catch (error) {
+        console.error('Error loading dragons data:', error);
+        return false;
+    }
+}
+
+// Function to assign random dragon
+function assignRandomDragon() {
+    if (!dragonsData) {
+        console.error('Dragons data not loaded');
+        return;
+    }
+    
+    const dragons = dragonsData.dragons;
+    const randomDragon = dragons[Math.floor(Math.random() * dragons.length)];
+    currentDragon = randomDragon;
+    
+    const dragonElement = document.getElementById('dragon');
+    
+    // Remove any existing color classes
+    dragons.forEach(dragon => dragonElement.classList.remove(dragon.className));
+    
+    // Add the new random color class
+    dragonElement.classList.add(randomDragon.className);
+    dragonElement.removeAttribute('style');
+    dragonElement.style.display = 'block'; // Make sure dragon is visible
+    
+    // Initialize stats from the dragon's base stats
+    Object.assign(stats, randomDragon.baseStats);
+}
 
 // Function to start the game
-function startGame() {
+async function startGame() {
     console.log("Game Started");
+    // Load dragons data first
+    const dataLoaded = await loadDragonsData();
+    if (!dataLoaded) {
+        console.error('Could not start game - dragons data not loaded');
+        return;
+    }
+    
+    assignRandomDragon();
     gameInterval = setInterval(() => {
         updateStats();
         renderStats();
@@ -38,7 +86,7 @@ function renderStats() {
     document.getElementById('cleanliness-stat').textContent = `Cleanliness: ${stats.cleanliness}/10`;
     document.getElementById('happiness-stat').textContent = `Happiness: ${stats.happiness}/10`;
     document.getElementById('exercise-stat').textContent = `Exercise: ${stats.exercise}/10`;
-    document.getElementById('total-stat').textContent = `Total Stats: ${stats.total}/40`;
+    // document.getElementById('total-stat').textContent = `Total Stats: ${stats.total}/40`;
 
     adjustHealthBasedOnStats(); // Adjust health based on current stats
 }
@@ -107,7 +155,7 @@ document.getElementById('feed').addEventListener('click', feed);
 document.getElementById('clean').addEventListener('click', clean);
 document.getElementById('play').addEventListener('click', play);
 document.getElementById('pet').addEventListener('click', exercise);
-document.getElementById('start-game').addEventListener('click', startGame);
+// document.getElementById('start-game').addEventListener('click', startGame);
 
 
 // startGame();
