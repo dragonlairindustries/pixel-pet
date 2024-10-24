@@ -11,7 +11,7 @@ let stats = {
 
 // Variables to control the game state
 let gameInterval;
-const statDecayRate = 100;
+const statDecayRate = 10000;
 
 // Function to start the game
 function startGame() {
@@ -38,8 +38,6 @@ function renderStats() {
     document.getElementById('cleanliness-stat').textContent = `Cleanliness: ${stats.cleanliness}/10`;
     document.getElementById('happiness-stat').textContent = `Happiness: ${stats.happiness}/10`;
     document.getElementById('exercise-stat').textContent = `Exercise: ${stats.exercise}/10`;
-    document.getElementById('total-stat').textContent = `Total Stats: ${stats.total}/40`;
-
     adjustHealthBasedOnStats(); // Adjust health based on current stats
 }
 
@@ -80,25 +78,32 @@ function showGameOverModal() {
     const gameOverModal = document.getElementById('game-over-modal');
     gameOverModal.style.display = 'flex'; // Modal pops up
 
-    // Add event listener to Restart Game button
-    document.getElementById('restart-game').addEventListener('click', function() {
-        resetGame();
-    });
+    // Remove any existing event listener to prevent duplicates // I noticed duplicates in the console when testing so added this. 
+    const restartButton = document.getElementById('restart-game');
+    restartButton.removeEventListener('click', resetGame);
+    restartButton.addEventListener('click', resetGame);
 }
 
+
 function resetGame() {
+    clearInterval(gameInterval); // Clear the existing game interval
+
     // Reset health stats
     stats.hunger = 10;
     stats.cleanliness = 10;
     stats.happiness = 10;
     stats.exercise = 10;
 
+    console.log("reset stats");
+
     // Hide the Game Over modal
     document.getElementById('game-over-modal').style.display = 'none';
 
     // Re-render stats and restart the game
+    updateStats();
     renderStats();
     startGame();
+    console.log("New game instance");
 }
 
 
@@ -107,7 +112,4 @@ document.getElementById('feed').addEventListener('click', feed);
 document.getElementById('clean').addEventListener('click', clean);
 document.getElementById('play').addEventListener('click', play);
 document.getElementById('pet').addEventListener('click', exercise);
-document.getElementById('start-game').addEventListener('click', startGame);
-
-
-// startGame();
+// document.getElementById('start-game').addEventListener('click', startGame);
