@@ -62,6 +62,12 @@ function adjustHealthBasedOnStats() {
     while (currentHealth < targetHealth) {
         increaseHealth();
     }
+
+    if (totalStats === 0) {
+        clearInterval(gameInterval); // Stop the game interval
+        showGameOverModal(); // Show the game over modal
+
+    }
 }
 
 

@@ -11,7 +11,7 @@ let stats = {
 
 // Variables to control the game state
 let gameInterval;
-const statDecayRate = 10000;
+const statDecayRate = 100;
 
 // Function to start the game
 function startGame() {
@@ -76,6 +76,11 @@ function exercise() {
     renderStats()
 }
 
+function showGameOverModal() {
+    const gameOverModal = document.getElementById('game-over-modal');
+    gameOverModal.style.display = 'flex'; // Modal pops up
+
+}
 
 // Event listeners for buttons
 document.getElementById('feed').addEventListener('click', feed);
