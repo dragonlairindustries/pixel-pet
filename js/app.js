@@ -12,7 +12,7 @@ let stats = {
 // Variables to control the game state
 let score = 0;
 let gameInterval;
-const statDecayRate = 100;
+const statDecayRate = 10000;
 
 // Function to start the game
 function startGame() {
