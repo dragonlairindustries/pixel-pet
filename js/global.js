@@ -102,9 +102,15 @@ function finishModal() {
     `;
 
     document.getElementById('begin-game').addEventListener('click', function() {
-        closeModal(); 
+        closeModal();
+        updateDragonName(); // Updates dragon's name on main card 
         startGame(); // invokes the start game function in app.js
     });
+}
+
+function updateDragonName() {
+    const dragonNameCard = document.getElementById('dynamic-dragon-name');
+    dragonNameCard.innerHTML = `${userData.dragonName}`;
 }
 
 renderStep(currentStep);
