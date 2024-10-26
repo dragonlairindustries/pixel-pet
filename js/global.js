@@ -68,15 +68,23 @@ function renderStep(stepIndex) {
 // Function to handle form submission and go to next step of modal
 function handleFormSubmission(stepIndex) {
     const inputValue = document.getElementById(steps[stepIndex].id).value;
+
+    const isValid = /^[a-zA-Z0-9]{1,16}$/.test(inputValue);
+
+    // Display an error message if user's input is not accepted
+    if (!isValid) {
+        alert("Please enter only letters and numbers, up to 16 characters.");
+        return;
+    }
     
-    //Save user's response
+    // Save user's response
     if (stepIndex === 0) {
         userData.username = inputValue;
     } else if (stepIndex === 1) {
         userData.dragonName = inputValue;
     }
 
-    //Move to the next step or close modal
+    // Move to the next step or close modal
     if (stepIndex + 1 < steps.length) {
         renderStep(stepIndex + 1);
     } else {
