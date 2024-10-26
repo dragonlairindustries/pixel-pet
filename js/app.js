@@ -111,8 +111,8 @@ function showGameOverModal() {
 
     // Remove any existing event listener to prevent duplicates // I noticed duplicates in the console when testing so added this. 
     const restartButton = document.getElementById('restart-game');
-    restartButton.removeEventListener('click', resetGame());
-    restartButton.addEventListener('click', resetGame());
+    restartButton.removeEventListener('click', resetGame);
+    restartButton.addEventListener('click', resetGame);
 }
 
 
@@ -155,12 +155,16 @@ function scoreTracker(action, currentStatValue) {
     updateScoreDisplay();
     return score;
 }
-    
+
 // Update the score display
 function updateScoreDisplay() {
     document.getElementById('score').textContent = `Score: ${score}`;
 }
 
+// Function to save score to userData object
+function saveScore() {
+    userData.score = score;
+}
 
 // Event listeners for buttons
 document.getElementById('feed').addEventListener('click', feed);

@@ -45,7 +45,8 @@ const steps = [
 // Object to store user data
 const userData = {
     username: '',
-    dragonName: ''
+    dragonName: '',
+    score: '',
 }
 
 // Function to render the current step
