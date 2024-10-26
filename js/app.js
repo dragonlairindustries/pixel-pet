@@ -23,6 +23,20 @@ function startGame() {
     }, statDecayRate);
 }
 
+// Function to generate a key for each game to be saved in local storage. Example output: 'aB3dE6fG8H'
+function generateRandomString(length = 10) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    return result;
+};
+
+// Generate key for game
+let gameKey = generateRandomString();
+
 // Function to update stats (decay over time)
 function updateStats() {
     stats.hunger = Math.max(0, stats.hunger - 1); // Hunger decreases
@@ -79,7 +93,14 @@ function exercise() {
     renderStats();
 }
 
+function saveUserData() {
+    // Convert userData to a JSON string and store it in local storage
+    const userDataString = JSON.stringify(userData);
+    localStorage.setItem(gameKey,userDataString);
+}
+
 function showGameOverModal() {
+
     const gameOverModal = document.getElementById('game-over-modal');
     gameOverModal.style.display = 'flex'; // Modal pops up
 
@@ -112,6 +133,9 @@ function resetGame() {
     renderStats();
     startGame();
     console.log("New game instance");
+
+    // Generate new game key
+    gameKey = generateRandomString();
 }
 
 // Score tracking function - now checks the stat before it's updated
@@ -126,12 +150,16 @@ function scoreTracker(action, currentStatValue) {
     updateScoreDisplay();
     return score;
 }
-    
+
 // Update the score display
 function updateScoreDisplay() {
     document.getElementById('score').textContent = `Score: ${score}`;
 }
 
+// Function to save score to userData object
+function saveScore() {
+    userData.score = score;
+}
 
 // Event listeners for buttons
 document.getElementById('feed').addEventListener('click', feed);
