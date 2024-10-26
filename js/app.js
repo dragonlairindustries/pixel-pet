@@ -93,24 +93,26 @@ function exercise() {
     renderStats();
 }
 
-function showGameOverModal() {
-
+function saveUserData() {
     // Convert userData to a JSON string and store it in local storage
     const userDataString = JSON.stringify(userData);
     localStorage.setItem(gameKey,userDataString);
-
+    
     // Retrieve userData from local storage, parse the string & console log the new JS object
     const storedUserData = localStorage.getItem('userData');
     const parsedUserData = JSON.parse(storedUserData);
     console.log(parsedUserData);
+}
+
+function showGameOverModal() {
 
     const gameOverModal = document.getElementById('game-over-modal');
     gameOverModal.style.display = 'flex'; // Modal pops up
 
     // Remove any existing event listener to prevent duplicates // I noticed duplicates in the console when testing so added this. 
     const restartButton = document.getElementById('restart-game');
-    restartButton.removeEventListener('click', resetGame);
-    restartButton.addEventListener('click', resetGame);
+    restartButton.removeEventListener('click', resetGame());
+    restartButton.addEventListener('click', resetGame());
 }
 
 

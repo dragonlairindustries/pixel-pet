@@ -65,6 +65,7 @@ function adjustHealthBasedOnStats() {
 
     if (totalStats === 0) {
         clearInterval(gameInterval); // Stop the game interval
+        saveUserData(); // Saver user's data to local storage
         showGameOverModal(); // Show the game over modal
         clearInterval(gameInterval);
 
