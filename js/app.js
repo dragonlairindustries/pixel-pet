@@ -12,7 +12,7 @@ let stats = {
 // Variables to control the game state
 let score = 0;
 let gameInterval;
-const statDecayRate = 10000;
+const statDecayRate = 100;
 
 // Function to start the game
 function startGame() {
@@ -22,6 +22,20 @@ function startGame() {
         renderStats();
     }, statDecayRate);
 }
+
+// Function to generate a key for each game to be saved in local storage. Example output: 'aB3dE6fG8H'
+function generateRandomString(length = 10) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    return result;
+};
+
+// Generate key for game
+let gameKey = generateRandomString();
 
 // Function to update stats (decay over time)
 function updateStats() {
@@ -80,6 +94,16 @@ function exercise() {
 }
 
 function showGameOverModal() {
+
+    // Convert userData to a JSON string and store it in local storage
+    const userDataString = JSON.stringify(userData);
+    localStorage.setItem(gameKey,userDataString);
+
+    // Retrieve userData from local storage, parse the string & console log the new JS object
+    const storedUserData = localStorage.getItem('userData');
+    const parsedUserData = JSON.parse(storedUserData);
+    console.log(parsedUserData);
+
     const gameOverModal = document.getElementById('game-over-modal');
     gameOverModal.style.display = 'flex'; // Modal pops up
 
@@ -112,6 +136,9 @@ function resetGame() {
     renderStats();
     startGame();
     console.log("New game instance");
+
+    // Generate new game key
+    gameKey = generateRandomString();
 }
 
 // Score tracking function - now checks the stat before it's updated
