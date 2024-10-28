@@ -1,5 +1,3 @@
-import { initializeHealthBar } from './health-bar.js';
-
 // Initialize stats
 let stats = {
     hunger: 10,

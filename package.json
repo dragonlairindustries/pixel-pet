@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --config jest.config.js --verbose"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
   },
