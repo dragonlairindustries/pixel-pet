@@ -1,6 +1,12 @@
-const healthBarContainer = document.getElementById('healthBar');
+let healthBarContainer;
 const maxHealth = 15;
 let currentHealth = maxHealth;
+
+// Function to initialize health bar
+function initializeHealthBar(containerId) {
+    healthBarContainer = document.getElementById(containerId);
+    createHealthBar();
+}
 
 function createHealthBar() {
     for (let i = 0; i < maxHealth; i++) {
@@ -76,3 +82,12 @@ function adjustHealthBasedOnStats() {
 
 createHealthBar();
 updateHealthBar();
+
+module.exports = {
+    initializeHealthBar,
+    updateHealthBar,
+    decreaseHealth,
+    increaseHealth,
+    adjustHealthBasedOnStats,
+    currentHealth
+};
