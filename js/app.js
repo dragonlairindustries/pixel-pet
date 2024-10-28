@@ -14,6 +14,7 @@ let score = 0;
 let gameInterval;
 const statDecayRate = 3000;
 
+
 // Function to start the game
 function startGame() {
     console.log("Game Started");
@@ -108,8 +109,15 @@ function showGameOverModal() {
     const restartButton = document.getElementById('restart-game');
     restartButton.removeEventListener('click', resetGame);
     restartButton.addEventListener('click', resetGame);
+
+    const seeHighScoreButton = document.getElementById('see-high-scores');
+    seeHighScoreButton.addEventListener('click', goToHighScorePage);
 }
 
+
+function goToHighScorePage() {
+    window.location.href = "../html/high-score.html";
+}
 
 function resetGame() {
     clearInterval(gameInterval); // Clear the existing game interval
