@@ -1,6 +1,10 @@
+.utility {
+    position: relative;
+}
+
 .main-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  
 }
 
 main {
@@ -14,10 +18,11 @@ h1 {
 }
 
 /* Styling for high score panel */
+
 .high-score-list {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    gap: 10px;
+    gap: 1rem;
     max-width: 600px;
     margin: 0 auto;
     font-size: 1.2rem;

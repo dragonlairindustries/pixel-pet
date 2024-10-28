@@ -9,10 +9,9 @@
   <link rel="stylesheet" href="../css/adaptive-header.css">
   <link rel="stylesheet" href="../css/footer.css" />
   <link rel="stylesheet" href="../css/play-game.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <!-- JS SCRIPTS -->
@@ -24,7 +23,7 @@
 
 <body>
   <!-- NAV BAR -->
-  <header>
+  <header class="utility">
     <nav>
         <ul class="sidebar">
             <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li> 
@@ -45,7 +44,7 @@
   </header>
 <!-- END NAV BAR -->
 
-  <main>
+  <main class="utility">
 
     <!-- Modal -->
     <section class="modal hidden">
@@ -103,7 +102,7 @@
     </main>
     
     <!-- Game Actions -->
-    <div class="game-actions">
+    <div class="game-actions utility">
       <button id="feed" type="button" aria-label="Feed the Dragon">Feed</button>
       <button id="clean" type="button" aria-label="Clean the Dragon's Cave">Clean</button>
       <button id="play" type="button" aria-label="Play with the Dragon">Play</button>
@@ -113,7 +112,7 @@
     
   
 </body>
-<footer>
+<footer class="utility">
   <p>© 2024 Dragon Lair Industries</p>
 </footer>
 </html>
