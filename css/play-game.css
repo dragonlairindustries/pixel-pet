@@ -1,3 +1,11 @@
+/* Define CSS Variables for colors */
+:root {
+  --main-bg-color: #f0f0f0;
+  --border-color: #ddd;
+  --health-color: #4CAF50;
+  --button-bg-color: #9999;
+  --button-hover-color: #9955;
+}
 /* Main Game Layout */
 main {
   max-width: 1000px;
@@ -23,7 +31,7 @@ main {
   position: relative; /* Container relative to its children */
   border: 3px solid #000;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: var(--main-bg-color);
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center; /* Center content horizontally */
@@ -48,12 +56,18 @@ main {
   top: 25%; /* Center vertically */
   left: 25%; /* Center horizontally */
 }
+
+/* Media query for small screens */
+@media (max-width: 700px) {
+  .game-container {
+    flex-direction: column; /* Change to column layout on small screens */
+  }
+}
 /* end of dragon container */
 
 /* Health bar */
 .health-bar-container {
   display: flex;
-  width: 75%;
   gap: 2px;
   padding: 2px;
   background-color: #333;
@@ -62,7 +76,7 @@ main {
 .health-unit {
   width: 20px;
   height: 20px;
-  background-color: #4CAF50;
+  background-color: var(--health-color);
 }
 .controls {
   margin-top: 20px;
@@ -77,34 +91,34 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 100px;
+  margin-left: 5%;
 }
 
 /* Stats heading */
 .dragon-stats h2 {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 150%;
   font-weight: bold;
   text-align: center;
+  height:100%;
 }
 
 /* Stats grid */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-items: center;
-  width: 100%;
+  gap: 5%;
 }
 
 /* Individual Stat Style */
 .dragon-stats .stat {
   background-color: #f0f0f0;
-  width: 125px; /* Size */
-  height: 125px; /* Size */
-  border-radius: 50%;
+  width: 100%; /* Size */
+  height: 100%; /* Size */
+  height: 100px;
+  border-radius: 15%;
   text-align: center;
-  font-size: 14px;
+  font-size: 100%;
   font-weight: bold;
   border: 2px solid #ddd;
   transition: transform 0.3s ease;
@@ -123,7 +137,6 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  background-color: #f0f0f0;
   border-radius: 10px;
   max-width: 600px;
   margin: 0 auto;
@@ -132,7 +145,7 @@ main {
 .game-actions button {
   flex: 1;
   padding: 15px;
-  background-color: #9999;
+  background-color: var(--button-bg-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -143,7 +156,7 @@ main {
 
 .game-actions button:hover,
 .game-actions button:active {
-  background-color: #9955;
+  background-color: var(--button-hover-color);
 }
 /* end of game actions */
 
@@ -162,7 +175,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 15px;
 }
 
@@ -200,6 +213,7 @@ button {
   border-radius: 5px;
   text-align: center;
   font-size: 1em;
+  margin-top: 5%;
 }
 
 .btn-open {
@@ -235,5 +249,3 @@ button {
   display: none;
 }
 /* end of play-game modal */
-
-
