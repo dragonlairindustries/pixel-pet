@@ -58,13 +58,13 @@ nav li:first-child {
     display: none;
 }
 
-@media(max-width: 867px) {
+@media(max-width: 1024px) {
     .hide-on-mobile {
         display: none;
     }
 }
 
-@media(min-width: 867px) {
+@media(min-width: 1024px) {
     .hide-on-desktop {
         display: none;
     }

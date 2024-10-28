@@ -1,3 +1,64 @@
 * {
-    font-family: Montserrat;
+    font-family: Roboto Mono;
 }
+
+body {
+    min-height: 100vh;
+}
+
+.utility {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    /* border: 2px solid red; */
+}
+
+/* xs */
+@media (min-width: 350px) {
+    .utility {
+      max-width: 340px;
+    }
+  }
+
+  @media (min-width: 500px) {
+    .utility {
+      max-width: 450px;
+    }
+  }
+  
+  /* sm */
+  @media (min-width: 640px) {
+    .utility {
+      max-width: 600px;
+    }
+  }
+  
+  /* md */
+  @media (min-width: 768px) {
+    .utility {
+      max-width: 710px;
+    }
+  }
+  
+  /* lg */
+  @media (min-width: 1024px) {
+    .utility {
+      max-width: 1024px;
+    }
+  }
+  
+  /* xl */
+  @media (min-width: 1280px) {
+    .utility {
+      max-width: 1280px;
+    }
+  }
+  
+  /* 2xl */
+  @media (min-width: 1536px) {
+    .utility {
+      max-width: 1536px;
+    }
+  }
