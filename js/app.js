@@ -170,8 +170,34 @@ function saveScore() {
 }
 
 // Event listeners for buttons
-document.getElementById('feed').addEventListener('click', feed);
-document.getElementById('clean').addEventListener('click', clean);
-document.getElementById('play').addEventListener('click', play);
-document.getElementById('pet').addEventListener('click', exercise);
-// document.getElementById('start-game').addEventListener('click', startGame);
+if (typeof document !== 'undefined') {
+    // Only run this code if we're in a browser environment
+    function initializeGameListeners() {
+        document.getElementById('feed')?.addEventListener('click', feed);
+        document.getElementById('clean')?.addEventListener('click', clean);
+        document.getElementById('play')?.addEventListener('click', play);
+        document.getElementById('pet')?.addEventListener('click', exercise);
+
+        // Initialize the health bar
+        initializeHealthBar('healthBar');
+    }
+    if (document.readyState === 'complete') {
+        initializeGameListeners();
+    } else {
+        window.addEventListener('DOMContentLoaded', initializeGameListeners);
+    }
+}
+
+
+if (typeof exports !== 'undefined') {
+    module.exports = {
+        feed,
+        clean,
+        play,
+        exercise,
+        scoreTracker,
+        generateRandomString,
+        stats,
+        score
+    };
+}
