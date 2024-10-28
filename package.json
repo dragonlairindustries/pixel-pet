@@ -16,5 +16,8 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
