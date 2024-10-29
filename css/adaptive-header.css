@@ -1,3 +1,17 @@
+:root {
+    /* Base navigation colors */
+    --nav-bg: #1A1B1E;
+    --nav-hover: #34363C;
+    --nav-text: #FFFFFF;
+    --nav-text-hover: #6B4EE6;
+    
+    /* Sidebar specific colors */
+    --sidebar-bg: rgba(26, 27, 30, 0.8);
+    --sidebar-border: #404249;
+    --sidebar-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation base styles */
 nav ul {
     margin: 0;
     padding: 0;
@@ -6,6 +20,7 @@ nav ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    background-color: var(--nav-bg);
 }
 
 nav li {
@@ -18,17 +33,20 @@ nav a {
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: black;
+    color: var(--nav-text);
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
-    background-color: #f0f0f0;
+    background-color: var(--nav-hover);
+    color: var(--nav-text-hover);
 }
 
 nav li:first-child {
     margin-right: auto;
 }
 
+/* Sidebar styles - Removed transitions and transform */
 .sidebar {
     position: fixed;
     top: 0;
@@ -36,28 +54,37 @@ nav li:first-child {
     height: 100vh;
     width: 250px;
     z-index: 999;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--sidebar-bg);
     backdrop-filter: blur(10px);
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-    display: none;
+    box-shadow: -10px 0 10px var(--sidebar-shadow);
+    display: none;  /* This is important - keep it as display: none */
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    border-left: 1px solid var(--sidebar-border);
 }
 
 .sidebar li {
     width: 100%;
-
 }
 
 .sidebar a {
     width: 100%;
+    color: var(--nav-text);
+    border-bottom: 1px solid var(--sidebar-border);
 }
 
+.sidebar a:hover {
+    background-color: var(--nav-hover);
+    color: var(--nav-text-hover);
+}
+
+/* Hidden by default */
 .horizontal-nav {
     display: none;
 }
 
+/* Media queries */
 @media(max-width: 1024px) {
     .hide-on-mobile {
         display: none;
@@ -73,6 +100,6 @@ nav li:first-child {
 @media(max-width: 400px) {
     .sidebar {
         width: 100%;
+        border-left: none;
     }
 }
-
