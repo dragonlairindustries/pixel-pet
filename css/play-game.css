@@ -1,16 +1,50 @@
 /* Define CSS Variables for colors */
 :root {
-  --main-bg-color: #f0f0f0;
-  --border-color: #ddd;
-  --health-color: #4CAF50;
-  --button-bg-color: #9999;
-  --button-hover-color: #9955;
+  /* Base Colors */
+  --bg-primary: #1A1B1E;
+  --bg-secondary: #2A2B2F;
+  --bg-elevated: #34363C;
+  
+  /* Interactive Elements */
+  --btn-primary: #6B4EE6;
+  --btn-primary-hover: #8469FF;
+  --btn-primary-active: #5B3ED6;
+  --btn-secondary: #404249;
+  --btn-secondary-hover: #4A4D55;
+  --btn-danger: #D64E4E;
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B5B8;
+  --text-disabled: #6C6D70;
+  
+  /* Stats Colors */
+  --stat-high: #4CAF50;
+  --stat-medium: #FFA726;
+  --stat-low: #EF5350;
+  
+  /* Borders & Dividers */
+  --border-primary: #404249;
+  --border-secondary: #2E2F34;
+  
+  /* Status Indicators */
+  --status-success: #43A047;
+  --status-warning: #FB8C00;
+  --status-error: #E53935;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
+
 /* Main Game Layout */
 main {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .game-container {
@@ -28,13 +62,14 @@ main {
 
 /* Dragon container */
 .dragon-animation-box {
-  position: relative; /* Container relative to its children */
-  border: 3px solid #000;
+  position: relative;
+  border: 3px solid var(--border-primary);
   padding: 10px;
-  background-color: var(--main-bg-color);
+  background-color: var(--bg-secondary);
   border-radius: 10px;
   margin-bottom: 20px;
-  text-align: center; /* Center content horizontally */
+  text-align: center;
+  box-shadow: var(--shadow-md);
 }
 
 .dragon-animation-box img {
@@ -49,35 +84,38 @@ main {
 
 .dragon-container {
   position: absolute;
-  left: 250px;
   width: 50%;
   height: 50%;
   z-index: 1;
-  top: 25%; /* Center vertically */
-  left: 25%; /* Center horizontally */
+  top: 25%;
+  left: 25%;
 }
-
-/* Media query for small screens */
-@media (max-width: 700px) {
-  .game-container {
-    flex-direction: column; /* Change to column layout on small screens */
-  }
-}
-/* end of dragon container */
 
 /* Health bar */
 .health-bar-container {
   display: flex;
   gap: 2px;
   padding: 2px;
-  background-color: #333;
-  border: 2px solid #000;
+  background-color: var(--bg-elevated);
+  border: 2px solid var(--border-primary);
+  border-radius: 4px;
 }
+
 .health-unit {
   width: 20px;
   height: 20px;
-  background-color: var(--health-color);
+  background-color: var(--stat-high);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.health-unit.medium {
+  background-color: var(--stat-medium);
+}
+
+.health-unit.low {
+  background-color: var(--stat-low);
+}
+
 .controls {
   margin-top: 20px;
   display: flex;
@@ -100,7 +138,8 @@ main {
   font-size: 150%;
   font-weight: bold;
   text-align: center;
-  height:100%;
+  height: 100%;
+  color: var(--text-primary);
 }
 
 /* Stats grid */
@@ -112,25 +151,27 @@ main {
 
 /* Individual Stat Style */
 .dragon-stats .stat {
-  background-color: #f0f0f0;
-  width: 100%; /* Size */
-  height: 100%; /* Size */
+  background-color: var(--bg-secondary);
+  width: 100%;
   height: 100px;
-  border-radius: 15%;
+  border-radius: 15px;
   text-align: center;
   font-size: 100%;
   font-weight: bold;
-  border: 2px solid #ddd;
-  transition: transform 0.3s ease;
-  display: flex; /* Center content in the stat */
+  border: 2px solid var(--border-primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .dragon-stats .stat:hover {
   transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-elevated);
 }
-/* end of dragon stats */
 
 /* Game Actions */
 .game-actions {
@@ -145,20 +186,24 @@ main {
 .game-actions button {
   flex: 1;
   padding: 15px;
-  background-color: var(--button-bg-color);
-  color: white;
+  background-color: var(--btn-primary);
+  color: var(--text-primary);
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
-.game-actions button:hover,
-.game-actions button:active {
-  background-color: var(--button-hover-color);
+.game-actions button:hover {
+  background-color: var(--btn-primary-hover);
+  box-shadow: var(--shadow-md);
 }
-/* end of game actions */
+
+.game-actions button:active {
+  background-color: var(--btn-primary-active);
+}
 
 /* Modal CSS */
 .modal {
@@ -174,9 +219,12 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  z-index: 100;
 }
 
 .modal .flex {
@@ -187,14 +235,16 @@ main {
 
 .modal input {
   padding: 0.7rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-primary);
   border-radius: 5px;
   font-size: 0.9em;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
 }
 
 .modal p {
   font-size: 0.9rem;
-  color: #777;
+  color: var(--text-secondary);
   margin: 0.4rem 0 0.2rem;
 }
 
@@ -208,12 +258,18 @@ button {
   display: inline-block;
   padding: 0.8rem 1.4rem;
   font-weight: 700;
-  background-color: black;
-  color: white;
+  background-color: var(--btn-primary);
+  color: var(--text-primary);
   border-radius: 5px;
   text-align: center;
   font-size: 1em;
   margin-top: 5%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--btn-primary-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-open {
@@ -224,8 +280,14 @@ button {
 .btn-close {
   transform: translate(10px, -20px);
   padding: 0.5rem 0.7rem;
-  background: #eee;
+  background: var(--btn-secondary);
   border-radius: 50%;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.btn-close:hover {
+  background-color: var(--btn-secondary-hover);
 }
 
 .overlay {
@@ -236,16 +298,32 @@ button {
   right: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
   z-index: 99;
-}
-
-.modal {
-  z-index: 100;
 }
 
 .hidden {
   display: none;
 }
-/* end of play-game modal */
+
+/* Media Queries */
+@media (max-width: 700px) {
+  .game-container {
+    flex-direction: column;
+  }
+  
+  .dragon-stats {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .game-actions {
+    flex-direction: column;
+  }
+  
+  .game-actions button {
+    width: 100%;
+  }
+}

@@ -1,3 +1,50 @@
+/* Add this to global.css at the top */
+:root {
+  /* Base Colors */
+  --bg-primary: #1A1B1E;
+  --bg-secondary: #2A2B2F;
+  --bg-elevated: #34363C;
+  
+  /* Interactive Elements */
+  --btn-primary: #6B4EE6;
+  --btn-primary-hover: #8469FF;
+  --btn-primary-active: #5B3ED6;
+  --btn-secondary: #404249;
+  --btn-secondary-hover: #4A4D55;
+  --btn-danger: #D64E4E;
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B5B8;
+  --text-disabled: #6C6D70;
+  
+  /* Stats Colors */
+  --stat-high: #4CAF50;
+  --stat-medium: #FFA726;
+  --stat-low: #EF5350;
+  
+  /* Borders & Dividers */
+  --border-primary: #404249;
+  --border-secondary: #2E2F34;
+  
+  /* Status Indicators */
+  --status-success: #43A047;
+  --status-warning: #FB8C00;
+  --status-error: #E53935;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Add dark mode base styles */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
 * {
     font-family: Roboto Mono;
 }
