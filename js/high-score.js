@@ -1,86 +1,89 @@
+// Define placeholder data for empty slots
+const PLACEHOLDER_DATA = {
+    username: "---",
+    score: 0
+};
+
 let allGameData = {};
 
-// Function to retrieve all game data from local storage and save it as a javascript object
+// Function to retrieve all game data from local storage
 function retrieveAllLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         try {
-            // Try to parse the value and store it in the highScoreList object
             allGameData[key] = JSON.parse(localStorage.getItem(key));
         } catch (e) {
-            // If parsing fails, store it as a plain value - this is the only way I could avoid JSON.parse get "Uncaught SyntaxError: Unexpected token h" error
             allGameData[key] = localStorage.getItem(key);
         }
     }
 }
 
-retrieveAllLocalStorage();
-delete allGameData.debug; // Removes the item: "debug: 'honey:core-sdk:*'" from the js object
+// Function to get formatted high scores with placeholders
+function getFormattedHighScores() {
+    retrieveAllLocalStorage();
+    
+    // Remove debug entry if it exists
+    delete allGameData.debug;
+    
+    // Convert and sort scores
+    const sortedScores = Object.entries(allGameData)
+        .sort(function(a, b) {
+            return b[1].score - a[1].score;
+        });
+    
+    // Create array of 10 entries, filling empty slots with placeholders
+    const highScores = Array(10).fill(null).map(function(item, index) {
+        if (index < sortedScores.length) {
+            return sortedScores[index];
+        }
+        // Return placeholder data in the same format as real entries
+        return [`placeholder-${index}`, PLACEHOLDER_DATA];
+    });
+    
+    return highScores;
+}
 
-// Convert the allGameData object to an array and sort by descending score
-const sortedScores = Object.entries(allGameData).sort(function(a, b) {return b[1].score - a[1].score});
+// Function to render high score panel
+function updateHighScorePanel() {
+    const highScores = getFormattedHighScores();
+    const highScorePanel = document.querySelector('.high-score-list');
+    
+    // Create header
+    const headerHTML = `
+        <div class="high-score-item">
+            <div class="order"><strong>NO.</strong></div>
+            <div class="username"><strong>NAME</strong></div>
+            <div class="score"><strong>SCORE</strong></div>
+        </div>
+    `;
+    
+    // Create score entries
+    const scoresHTML = highScores.map(function(score, index) {
+        return `
+            <div class="high-score-item">
+                <div class="order">${index + 1}</div>
+                <div class="username">${score[1].username}</div>
+                <div class="score">${score[1].score}</div>
+            </div>
+        `;
+    }).join('');
+    
+    // Update panel
+    highScorePanel.innerHTML = headerHTML + scoresHTML;
+}
 
-// Save top ten highest scores from sortedScores array and save to highScores array
-const highScores = sortedScores.slice(0,10);
-console.log(highScores)
+// Initial update
+updateHighScorePanel();
 
-// Dynamically update high score panel
-const highScorePanel = document.querySelector('.high-score-list');
-highScorePanel.innerHTML = `
-    <div class="high-score-item">
-        <div class="order"><strong>NO.</strong></div>
-        <div class="username"><strong>NAME</strong></div>
-        <div class="score"><strong>SCORE</strong></div>
-    </div>
-    <div class="high-score-item">
-        <div class="order">1</div>
-        <div class="username">${highScores[0][1].username}</div>
-        <div class="score">${highScores[0][1].score}</div>
-    </div>
-    <div class="high-score-item">
-        <div class="order">2</div>
-        <div class="username">${highScores[1][1].username}</div>
-        <div class="score">${highScores[1][1].score}</div>
-    </div>    
-        <div class="high-score-item">
-        <div class="order">3</div>
-        <div class="username">${highScores[2][1].username}</div>
-        <div class="score">${highScores[2][1].score}</div>
-    </div> 
-        <div class="high-score-item">
-        <div class="order">4</div>
-        <div class="username">${highScores[3][1].username}</div>
-        <div class="score">${highScores[3][1].score}</div>
-    </div>  
-        <div class="high-score-item">
-        <div class="order">5</div>
-        <div class="username">${highScores[4][1].username}</div>
-        <div class="score">${highScores[4][1].score}</div>
-    </div>  
-        <div class="high-score-item">
-        <div class="order">6</div>
-        <div class="username">${highScores[5][1].username}</div>
-        <div class="score">${highScores[5][1].score}</div>
-    </div>  
-        <div class="high-score-item">
-        <div class="order">7</div>
-        <div class="username">${highScores[6][1].username}</div>
-        <div class="score">${highScores[6][1].score}</div>
-    </div>  
-        <div class="high-score-item">
-        <div class="order">8</div>
-        <div class="username">${highScores[7][1].username}</div>
-        <div class="score">${highScores[7][1].score}</div>
-    </div>  
-      </div>  
-        <div class="high-score-item">
-        <div class="order">9</div>
-        <div class="username">${highScores[8][1].username}</div>
-        <div class="score">${highScores[8][1].score}</div>
-    </div>    </div>  
-        <div class="high-score-item">
-        <div class="order">10</div>
-        <div class="username">${highScores[9][1].username}</div>
-        <div class="score">${highScores[9][1].score}</div>
-    </div>  
-`;
+// Function to add new score
+function addNewScore(username, score) {
+    const timestamp = Date.now();
+    const gameData = {
+        username,
+        score,
+        timestamp
+    };
+    
+    localStorage.setItem(`game-${timestamp}`, JSON.stringify(gameData));
+    updateHighScorePanel();
+}
